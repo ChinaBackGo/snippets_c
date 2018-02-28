@@ -39,23 +39,35 @@ void pointer_test()
     cout << "not null\n";
 }
 
-struct Vector {
-  int sz;
-  double* elem;
+class Vector {
+public:
+  Vector (int s) :elem{new double[s]}, sz {s}{ } //construct a vector
+  double& operator[] (int i) {return elem[i];} //element access : subscripting
+  int size() {return sz;}
+private:
+  double* elem; //pointer to elements
+  int sz; //number of elements
 };
+
+double read_and_sum(int s)
+{
+  Vector v(s);
+  cout << "Enter vector elements\n";
+  for (int i = 0; i!=v.size(); ++i)
+    cin>>v[i];
+
+  double sum {0};
+  for (int i = 0; i!=v.size(); ++i)
+    sum+=v[i];
+  return sum;
+}
 
 int main ()
 {
   auto value_0 {2};
   auto value_1 {4};
 
-  Vector v;
-  Vector &x = v;
-  Vector *y = &v;
-
-  v.sz = 3;
-  x.sz = 3;
-  y->sz = 3;
+  cout << read_and_sum (3) << " is Sum of vector \n";
   
   cout << "Hi there\n";
   print_square(value_0);
