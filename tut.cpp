@@ -49,6 +49,8 @@ private:
   int sz; //number of elements
 };
 
+enum Color {red, blue, green};
+
 double read_and_sum(int s)
 {
   Vector v(s);
@@ -67,6 +69,8 @@ int main ()
   auto value_0 {2};
   auto value_1 {4};
 
+  Color col = Color::red;
+  cout << "this is the colour red: " << col << "\n";
   cout << read_and_sum (3) << " is Sum of vector \n";
   
   cout << "Hi there\n";
